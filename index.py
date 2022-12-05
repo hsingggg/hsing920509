@@ -13,6 +13,7 @@ app = Flask(__name__)
 def index():
     homepage = "<h1>李幸諭Python網頁</h1>"
     homepage += "<br><a href=/read>讀取Firestore資料</a><br>"
+    homepage += "<br><a href=/webhook>查詢電影</a><br>"
     return homepage
 
 @app.route("/read", methods=["GET", "POST"])
@@ -35,7 +36,8 @@ def read():
         return result
     else:
         return render_template("read.html")
-        @app.route("/webhook", methods=["POST"])
+
+@app.route("/webhook", methods=["POST"])
 def webhook():
     # build a request object
     req = request.get_json(force=True)
